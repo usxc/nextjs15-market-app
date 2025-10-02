@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
-export async function POST() {
-  return NextResponse.json({message: "アイテム作成"})
+export async function POST(request) {
+    console.log(await request.json())
+    return NextResponse.json({message: "アイテム作成"})
 }
