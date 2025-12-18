@@ -11,7 +11,7 @@ const ReadAllItems = async() => {
         <div>
             <h1 className="h1-style">こんにちは</h1>
             {allItems.map(item => 
-                <div>
+                <div key={item._id}>
                     <img src={item.image}/>
                     <h2>{item.price}</h2>
                     <h3>{item.title}</h3>
