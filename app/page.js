@@ -1,3 +1,6 @@
+import Link from "next/link"
+import Image from "next/image"
+
 const getAllItems = async() => {
     const response = await fetch("http://localhost:3000/api/item/readall", {cache: "no-store"})
     const jsonData = await response.json()
@@ -11,12 +14,14 @@ const ReadAllItems = async() => {
         <div>
             <h1 className="h1-style">こんにちは</h1>
             {allItems.map(item => 
-                <div key={item._id}>
-                    <img src={item.image}/>
-                    <h2>{item.price}</h2>
-                    <h3>{item.title}</h3>
-                    <h4>{item.description}</h4>
-                </div>
+                <Link href="" key={item._id}>
+                    <Image src={item.image} width={750} height={500} alt="item-image" priority/>
+                    <div>
+                        <h2>{item.price}</h2>
+                        <h3>{item.title}</h3>
+                        <h4>{item.description.substring(0, 80)}</h4>
+                    </div>
+                </Link>
             )}
         </div>
     )
