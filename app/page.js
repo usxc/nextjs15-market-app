@@ -7,11 +7,17 @@ const getAllItems = async() => {
 
 const ReadAllItems = async() => {
     const allItems = await getAllItems()
-    console.log(allItems)
     return (
         <div>
             <h1 className="h1-style">こんにちは</h1>
-            <h3>さようなら</h3>
+            {allItems.map(item => 
+                <div>
+                    <img src={item.image}/>
+                    <h2>{item.price}</h2>
+                    <h3>{item.title}</h3>
+                    <h4>{item.description}</h4>
+                </div>
+            )}
         </div>
     )
 }
