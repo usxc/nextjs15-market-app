@@ -12,14 +12,13 @@ const ReadAllItems = async() => {
     const allItems = await getAllItems()
     return (
         <div>
-            <h1 className="h1-style">こんにちは</h1>
             {allItems.map(item => 
                 <Link href="" key={item._id}>
                     <Image src={item.image} width={750} height={500} alt="item-image" priority/>
                     <div>
                         <h2>{item.price}</h2>
                         <h3>{item.title}</h3>
-                        <h4>{item.description.substring(0, 80)}</h4>
+                        <p>{item.description.substring(0, 80)}</p>
                     </div>
                 </Link>
             )}
