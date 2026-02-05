@@ -11,7 +11,8 @@ const CreateItem = () => {
 
     const router = useRouter()
 
-    const handleSubmit = () => {
+    const handleSubmit = async(e) => {
+        e.preventDefault()
         try {
             fetch("http://localhost:3000/api/item/create", {
                 method: "POST",
