@@ -14,7 +14,7 @@ const CreateItem = () => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
-            fetch("http://localhost:3000/api/item/create", {
+            const response = await fetch("http://localhost:3000/api/item/create", {
                 method: "POST",
                 headers: {
                     "Accept": "application/json",
@@ -28,7 +28,7 @@ const CreateItem = () => {
                     email: "ダミーデータ"
                 })
             })
-            const jsonData = response.json()
+            const jsonData = await response.json()
             alert(jsonData.message)
             router.push("/")
             router.refresh()
