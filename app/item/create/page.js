@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 const CreateItem = () => {
 
@@ -7,6 +8,8 @@ const CreateItem = () => {
     const [price, setPrice] = useState("")
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
+
+    const router = useRouter()
 
     const handleSubmit = () => {
         try {
@@ -26,6 +29,8 @@ const CreateItem = () => {
             })
             const jsonData = response.json()
             alert(jsonData.message)
+            router.push("/")
+            router.refresh()
         } catch {
             alert("アイテム作成失敗")
         }
