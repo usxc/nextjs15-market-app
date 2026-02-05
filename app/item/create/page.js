@@ -1,4 +1,5 @@
 "use client"
+import { responseCookiesToRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies"
 import { useState } from "react"
 
 const CreateItem = () => {
@@ -8,10 +9,33 @@ const CreateItem = () => {
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
 
+    const handleSubmit = () => {
+        try {
+            fetch("http://localhost:3000/api/item/create", {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    title: title,
+                    price: price,
+                    image: image,
+                    description: description,
+                    email: "ダミーデータ"
+                })
+            })
+            const jsonData = response.json()
+            alert(jsonData.message)
+        } catch {
+            alert("アイテム作成失敗")
+        }
+    }
+
     return (
         <div>
             <h1>アイテム作成</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="title" placeholder="アイテム名" required/>
                 <input value={price} onChange={(e) => setPrice(e.target.value)} type="number" name="price" placeholder="価格" required/>
                 <input value={image} onChange={(e) => setImage(e.target.value)} type="text" name="image" placeholder="画像" required/>
