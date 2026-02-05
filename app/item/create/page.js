@@ -18,7 +18,8 @@ const CreateItem = () => {
                 method: "POST",
                 headers: {
                     "Accept": "application/json",
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify({
                     title: title,
@@ -44,7 +45,7 @@ const CreateItem = () => {
                 <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="title" placeholder="アイテム名" required/>
                 <input value={price} onChange={(e) => setPrice(e.target.value)} type="number" name="price" placeholder="価格" required/>
                 <input value={image} onChange={(e) => setImage(e.target.value)} type="text" name="image" placeholder="画像" required/>
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)} name="description" placeholder="商品説明" required></textarea>
+                <textarea value={description} onChange={(e) => setDescription(e.target.value)} name="description" rows={15} placeholder="商品説明" required></textarea>
                 <button>作成</button>
                 </form>
         </div>
