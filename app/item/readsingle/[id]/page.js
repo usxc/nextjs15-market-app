@@ -1,12 +1,14 @@
 const getSingleItem = async(id) => {
-    const response = await fetch(`http://localhost:3000/api/item/readsingle/${id}`)
+    const response = await fetch(`http://localhost:3000/api/item/readsingle/${id}`, {cache: "no-store"})
     const jsonData = await response.json()
-    console.log(jsonData.singleItem)
+    const singleItem = jsonData.singleItem
+    return singleItem
 }
 
 const ReadSingleItem = async(context) => {
     const params = await context.params
-    getSingleItem(params.id)
+    const singleItem = await getSingleItem(params.id)
+    console.log(singleItem)
     return (
         <h1>個別アイテムページ</h1>
     )
