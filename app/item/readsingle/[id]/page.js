@@ -12,7 +12,7 @@ const ReadSingleItem = async(context) => {
     return (
         <div>
             <div>
-                <img src={singleItem.image} width={750} height={500} alt="item-image" property/>
+                <img src={singleItem.image} width={750} height={500} alt="item-image" priority="true"/>
             </div>
             <div>
                 <h1>{singleItem.title}</h1>
