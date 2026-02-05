@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server"
 import { jwtVerify } from "jose"
-const { TOKEN } = process.env;
 
 export async function middleware(request) {
-
-    const token = TOKEN
-    // const token = await request.headers.get("Authorization")?.split(" ")[1]
+    const token = await request.headers.get("Authorization")?.split(" ")[1]
     
     if(!token) {
         return NextResponse.json({message: "トークンがありません"})
